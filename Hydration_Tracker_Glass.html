@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydration Tracker</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+    .tracker {
+        display: flex;
+        gap: 20px;
+    }
+    .glass {
+        width: 80px;
+        height: 150px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+    .water {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(to top, #00aaff, #0077cc);
+        transition: height 0.3s ease;
+    }
+    .empty {
+        height: 0%;
+    }
+    .half {
+        height: 50%;
+    }
+    .full {
+        height: 100%;
+    }
+</style>
+</head>
+<body>
+<div class="tracker">
+    <div class="glass" onclick="toggleFill(this)">
+        <div class="water empty"></div>
+    </div>
+    <div class="glass" onclick="toggleFill(this)">
+        <div class="water empty"></div>
+    </div>
+    <div class="glass" onclick="toggleFill(this)">
+        <div class="water empty"></div>
+    </div>
+</div>
+
+<script>
+    function toggleFill(glass) {
+        const water = glass.querySelector('.water');
+        if (water.classList.contains('empty')) {
+            water.classList.remove('empty');
+            water.classList.add('half');
+        } else if (water.classList.contains('half')) {
+            water.classList.remove('half');
+            water.classList.add('full');
+        } else {
+            water.classList.remove('full');
+            water.classList.add('empty');
+        }
+    }
+</script>
+</body>
+</html>
